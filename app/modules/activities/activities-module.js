@@ -13,11 +13,20 @@ angular.module('tracker').config(function($stateProvider, $urlRouterProvider) {
       }
     })
     .state('activity', {
+      abstract: true,
       url: "/:id",
-      templateUrl: "modules/activities/activities-view.html",
       controller: function($scope, $stateParams) {
         console.debug('StateParams %o', $stateParams);
-        $scope.selectedActivity = $stateParams.id;
-      }
+        $scope.activityId = $stateParams.id;
+      },
+      template: '<ui-view/>'
+    })
+    .state('activity.view', {
+      url: "/view",
+      templateUrl: "modules/activities/activities-view.html",
+    })
+    .state('activity.edit', {
+      url: "/edit",
+      templateUrl: "modules/activities/activities-edit.html"
     });
 });

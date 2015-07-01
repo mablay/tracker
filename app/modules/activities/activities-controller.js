@@ -34,7 +34,7 @@ angular.module('tracker').controller('ActivitiesController', function($scope, $l
 	$scope.uiSelectActivity = function(id) {
 		var activity = $scope.$storage.activities[id]
 		console.debug('User selected activity %s', activity.title);
-    $state.go('activity', {id: id});
+    	$state.go('activity.view', {id: id});
 	};
 
 });

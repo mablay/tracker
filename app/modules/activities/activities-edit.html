@@ -1,0 +1,42 @@
+<div class="container" ng-controller="ActivitiesEditController">
+
+  <h3 ng-bind="$storage.activities[activityId].title"></h3>
+
+  <br>
+  
+  <div class="row">
+    <div class="col-md-4 cell-label">
+      <label for="fieldName">New Field</label>
+    </div>
+    <div class="col-md-4">
+      <div class="input-group">
+        <input id="fieldName"
+            ng-model="fieldName"
+            type="text"
+            class="form-control"
+            ng-keypress="uiFieldNameInputKeyPress($event)"
+            placeholder="Field name" />
+        <span class="input-group-btn">
+          <button class="btn btn-primary" 
+                  type="button"
+                  ng-click="uiAddField()">
+            <span class="glyphicon glyphicon-plus"></span>
+          </button>
+        </span>
+          
+      </div>
+    </div>
+  </div>
+
+
+      <!-- List properties -->
+      <ul class="list-group">
+        <li class="list-group-item" ng-repeat="(title, activity) in activity">
+          <span ng-bind="title"></span>
+        </li>
+      </ul>      
+
+      <pre ng-bind="$storage.activities[activityId] | json"></pre>
+
+  
+</div>
