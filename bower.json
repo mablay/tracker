@@ -8,6 +8,7 @@
     "angular-sanitize": "~1.4.0",
     "angular-ui-router": "~0.2.15",
     "ngstorage": "~0.3.6",
-    "xxhash": "*"
+    "xxhash": "*",
+    "bootswatch-dist": "yeti"
   }
 }
