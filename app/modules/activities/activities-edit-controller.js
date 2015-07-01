@@ -1,6 +1,7 @@
-angular.module('tracker').controller('ActivitiesEditController', function($scope, $localStorage, $state){
-  
-  	var activityId = $scope.activityId;	// passed by parent abstract controller (ui-router)
+angular.module('tracker')
+.controller('ActivitiesEditController', function($scope, $localStorage, $state) {
+
+  var activityId = $scope.activityId;	// passed by parent abstract controller (ui-router)
 	$scope.$storage = $localStorage;
 
 
