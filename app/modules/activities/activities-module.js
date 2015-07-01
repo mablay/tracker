@@ -12,11 +12,12 @@ angular.module('tracker').config(function($stateProvider, $urlRouterProvider) {
       	console.debug('Activity Ctrl');
       }
     })
-    .state('activity:id', {
+    .state('activity', {
       url: "/:id",
-      templateUrl: "modules/activities/activity-view.html",
-      controller: function($scope) {
-        $scope.items = ["A", "List", "Of", "Items"];
+      templateUrl: "modules/activities/activities-view.html",
+      controller: function($scope, $stateParams) {
+        console.debug('StateParams %o', $stateParams);
+        $scope.selectedActivity = $stateParams.id;
       }
     });
 });

@@ -1,7 +1,5 @@
-angular.module('tracker').controller('ActivitiesController', function($scope, $localStorage){
-
-	console.debug('This is the controller');
-
+angular.module('tracker').controller('ActivitiesController', function($scope, $localStorage, $state){
+  
 	$scope.$storage = $localStorage;
 	$scope.$storage.activities = $scope.$storage.activities || {};
 
@@ -36,6 +34,7 @@ angular.module('tracker').controller('ActivitiesController', function($scope, $l
 	$scope.uiSelectActivity = function(id) {
 		var activity = $scope.$storage.activities[id]
 		console.debug('User selected activity %s', activity.title);
+    $state.go('activity', {id: id});
 	};
 
 });
