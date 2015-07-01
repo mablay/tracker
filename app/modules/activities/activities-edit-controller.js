@@ -3,7 +3,8 @@ angular.module('tracker')
 
   var activityId = $scope.activityId;	// passed by parent abstract controller (ui-router)
 	$scope.$storage = $localStorage;
-
+  $scope.activity = $localStorage.activities[activityId];
+  console.debug('Activity %o', $scope.activity);
 
 	$scope.init = function() {
 		console.debug('Init edit activity with id %s', activityId);

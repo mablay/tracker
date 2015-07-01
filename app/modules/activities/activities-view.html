@@ -1,22 +1,22 @@
 <div class="container" ng-controller="ActivitiesController">
   <div class="row">
     <div class="col-md-4 col-md-offset-4">
-      <h4 ng-bind="$storage.activities[activityId].title"></h4>
+      <h4 ng-bind="activity.title"></h4>
       <br>
 
-      <div ng-if="!$storage.activities[activityId].records">
+      <div ng-if="!activity.records || !activity.records.length > 0">
         <div class="btn btn-primary" ui-sref="activity.edit">Edit</div>
       </div>
       <br>
 
-      <!-- List activities -->
+      <!-- List records -->
       <ul class="list-group">
-        <li class="list-group-item" ng-repeat="(title, activity) in $storage.activities">
+        <li class="list-group-item" ng-repeat="record in activity.records">
           <span ng-bind="title"></span>
         </li>
-      </ul>      
+      </ul>
 
-      <pre ng-bind="$storage.activities[activityId] | json"></pre>
+      <pre ng-bind="activity | json"></pre>
 
     </div>
   </div>
