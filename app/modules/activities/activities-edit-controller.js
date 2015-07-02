@@ -1,26 +1,37 @@
-angular.module('tracker')
-.controller('ActivitiesEditController', function($scope, $localStorage, $state) {
+angular.module('tracker').controller('ActivitiesEditController', function($scope, $localStorage, $state){
+  
 
-  var activityId = $scope.activityId;	// passed by parent abstract controller (ui-router)
 	$scope.$storage = $localStorage;
-  $scope.activity = $localStorage.activities[activityId];
-  console.debug('Activity %o', $scope.activity);
+  	var activityId = $scope.activityId;	// passed by parent abstract controller (ui-router)
 
-	$scope.init = function() {
-		console.debug('Init edit activity with id %s', activityId);
-	};
+  	// shorthand structure - make sure to serialize it after modification!
+  	$scope.structure = $localStorage.activities[activityId].structure || {};
 
+
+	// --------------------
+	// UI Actions
+	// --------------------
 	$scope.uiFieldNameInputKeyPress = function(event) {
 		if (event.keyCode == 13) { addField(); }
 	};
 	$scope.uiAddField = function() {
 		addField();
 	};
+	$scope.uiDeleteActivity = function() {
+		console.debug('User: Delete activity %s', activityId);
+	};
 
+
+	// --------------------
+	// Private Methods
+	// --------------------
 	var addField = function() {
 		console.debug('addField %o', $scope.fieldName);
 		// Check fieldName
 		if (!$scope.fieldName || $scope.fieldName.length < 1) return;
+		if ($scope.structure) return;
+
+		// Create new field
 
 	};
 

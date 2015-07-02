@@ -46,6 +46,11 @@ body {
   padding-top: 6px;
 }
 
+.header-accessory {
+  margin-top: 15px;
+  text-align: right;
+}
+
 /* Main marketing message and sign up button */
 
 /* Responsive: Portrait tablets and up */
