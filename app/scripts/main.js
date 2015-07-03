@@ -1,7 +1,9 @@
 console.log('Init...');
 
-var app = angular.module('tracker', [
+angular.module('tracker', [
 	'ui.router',
+	'ui.bootstrap',
 	'ngResource',
-	'ngStorage'
+	'ngStorage',
+	'ngAnimate'
 ]);

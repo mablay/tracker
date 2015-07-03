@@ -19,6 +19,8 @@ angular.module('tracker').controller('ActivitiesEditController', function($scope
 	};
 	$scope.uiDeleteActivity = function() {
 		console.debug('User: Delete activity %s', activityId);
+		$('#confirmDeleteActivityModal').modal('hide');
+		$state.go('activities');
 	};
 
 

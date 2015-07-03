@@ -9,6 +9,8 @@
     "angular-ui-router": "~0.2.15",
     "ngstorage": "~0.3.6",
     "xxhash": "*",
-    "bootswatch-dist": "yeti"
+    "bootswatch-dist": "yeti",
+    "angular-animate": "~1.4.1",
+    "angular-bootstrap": "~0.13.0"
   }
 }

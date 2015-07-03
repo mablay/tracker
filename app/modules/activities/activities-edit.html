@@ -5,7 +5,9 @@
         <h3 ng-bind="$storage.activities[activityId].title"></h3>
     </div>
     <div class="col-md-2 header-accessory">
-        <div class="btn btn-danger" ng-click="uiDeleteActivity()">
+        <div class="btn btn-danger" 
+              data-toggle="modal"
+              data-target="#confirmDeleteActivityModal">
           <span class="glyphicon glyphicon-trash"></span>
         </div>
     </div>
@@ -38,14 +40,40 @@
   </div>
 
 
-      <!-- List properties -->
-      <ul class="list-group">
-        <li class="list-group-item" ng-repeat="(title, activity) in activity">
-          <span ng-bind="title"></span>
-        </li>
-      </ul>      
+  <!-- List properties -->
+  <ul class="list-group">
+    <li class="list-group-item" ng-repeat="(title, activity) in activity">
+      <span ng-bind="title"></span>
+    </li>
+  </ul>      
 
-      <pre ng-bind="$storage.activities[activityId] | json"></pre>
+  <pre ng-bind="$storage.activities[activityId] | json"></pre>
 
-  
+
+  <!-- Modal Dialog -->
+  <div class="modal fade modal-confirm" id="confirmDeleteActivityModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteActivityModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" 
+                  class="close" 
+                  data-dismiss="modal" 
+                  aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="modal-title" id="confirmDeleteActivityModalLabel">Delete Activity</h4>
+        </div>
+        <div class="modal-body">
+          This will delete "<span ng-bind="$storage.activities[activityId].title"></span>" with all records!
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">CANCEL</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="uiDeleteActivity()">DELETE</button>
+        </div>
+      </div>
+    </div>
+  </div>  
+
 </div>
+
+
