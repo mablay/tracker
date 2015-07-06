@@ -5,5 +5,6 @@ angular.module('tracker', [
 	'ui.bootstrap',
 	'ngResource',
 	'ngStorage',
-	'ngAnimate'
+	'ngAnimate',
+  'fields'
 ]);
