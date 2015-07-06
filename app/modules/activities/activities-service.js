@@ -63,6 +63,7 @@ angular.module('tracker').service('Activity', function($localStorage) {
         title: activityName,
         schema: {
           timestamp: {
+            label: "Time",
             type: "timestamp",
             default: "NOW",
             visible: false
@@ -72,6 +73,19 @@ angular.module('tracker').service('Activity', function($localStorage) {
       };
       $localStorage.activities[activityId] = activity;
       return activity;
+    },
+    /**
+     * Update an activity by appending a single record
+     */
+    record: function(activityId, record) {
+      if (!record) {
+        console.warn('Record insertion failed! Record must correspond to its schema');
+      }
+      if (!$localStorage.activities[activityId]) {
+        console.warn('Record insertion failed! Activity %s could not be resolved.', activityId);
+        return;
+      }
+      $localStorage.activities[activityId].records.push(record);
     },
     delete: function(activityId) {
       console.debug('[ACTIVITY] DELETE %s', activityId);

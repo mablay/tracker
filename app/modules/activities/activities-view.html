@@ -1,22 +1,50 @@
 <div class="container" ng-controller="ActivitiesController" ng-init="initActivityView()">
   <div class="row">
-    <div class="col-md-4 col-md-offset-4">
+    <div class="col-md-6 col-md-offset-3">
       <h4 ng-bind="activity.title"></h4>
+      <a ui-sref="activities">Back</a>
       <br>
 
-      <div ng-if="!activity.records || !activity.records.length > 0">
-        <div class="btn btn-primary" ui-sref="activity.edit">Edit</div>
+      <!-- Toolbar -->
+      <div class="row">
+        <!-- left toolbar -->
+        <div class="col col-md-6">
+          <!-- EDIT BUTTON -->
+          <div ng-if="!activity.records || !activity.records.length > 0">
+            <div class="btn btn-warning" ui-sref="activity.edit">Edit</div>
+          </div>
+          <!-- Delete Button -->
+          <div ng-if="activity.records">
+            <div class="btn btn-danger" ng-click="uiDeleteActivity()">
+              <span class="glyphicon glyphicon-trash"></span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- right toolbar -->
+        <div class="col col-md-6 text-right">
+          <!-- ADD RECORD BUTTON -->
+          <div class="btn btn-primary" ui-sref="activity.record">
+            <span class="glyphicon glyphicon-plus"></span>
+          </div>
+        </div>
       </div>
+
       <br>
 
       <!-- List records -->
       <ul class="list-group">
         <li class="list-group-item" ng-repeat="record in activity.records">
-          <span ng-bind="title"></span>
+          <div class="row" ng-repeat="(key, value) in record">
+            <div class="col col-md-12">
+              <span ng-bind="key"></span>    
+              <span ng-bind="value|date:'yyyy-MM-dd HH:mm:ss'"></span>    
+            </div>
+          </div>
         </li>
       </ul>
 
-      <pre ng-bind="activity | json"></pre>
+      <pre ng-bind="activity.schema | json"></pre>
 
     </div>
   </div>

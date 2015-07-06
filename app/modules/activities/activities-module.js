@@ -28,5 +28,9 @@ angular.module('tracker').config(function($stateProvider, $urlRouterProvider) {
     .state('activity.edit', {
       url: "/edit",
       templateUrl: "modules/activities/activities-edit.html"
+    })
+    .state('activity.record', {
+      url: "/record",
+      templateUrl: "modules/activities/activities-record.html"
     });
 });
