@@ -1,0 +1,106 @@
+<div class="container" ng-controller="FormFieldEditController">
+
+  <!-- Activity > {{FieldName}} - [TrashButton] -->
+  <div class="row">
+    <!-- Activity link and field name -->
+    <div class="col-md-10">
+        <h3>
+          <a ui-sref="^.edit" ng-bind="activity.title"></a>
+          <span class="glyphicon glyphicon-chevron-right small"></span>
+          <span ng-bind="fieldName"></span>
+        </h3>
+    </div>
+    <!-- Delete field button -->
+    <div class="col-md-2 header-accessory">
+        <div class="btn btn-danger"
+             ng-click="uiDeleteField()">
+          <span class="glyphicon glyphicon-trash"></span>
+        </div>
+    </div>
+  </div>
+
+  <br>
+
+
+
+<div class="form-horizontal">
+  <div class="form-group">
+    <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+    <div class="col-sm-10">
+      <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+    <div class="col-sm-10">
+      <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <div class="checkbox">
+        <label>
+          <input type="checkbox"> Remember me
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-default">Sign in</button>
+    </div>
+  </div>
+</div>
+
+  <!-- Field name -->
+  <div class="row">
+    <!-- Label -->
+    <div class="col-md-4 cell-label">
+      <label for="fieldName">Field Name</label>
+    </div>
+
+    <!-- Field Name -->
+    <div class="col-md-8">
+      <input  id="fieldName"
+              ng-model="fieldName"
+              type="text"
+              class="form-control"
+              ng-keypress="uiFieldNameInputKeyPress($event)"
+              placeholder="Field name" />
+    </div>
+  </div>
+
+
+
+  <!-- Field name -->
+  <div class="row">
+    <!-- Label -->
+    <div class="col-md-4 cell-label">
+      <label for="fieldName">Field Name</label>
+    </div>
+
+    <!-- Field Name -->
+    <div class="col-md-4">
+      <div class="input-group">
+        <input id="fieldName"
+            ng-model="fieldName"
+            type="text"
+            class="form-control"
+            ng-keypress="uiFieldNameInputKeyPress($event)"
+            placeholder="Field name" />
+        <span class="input-group-btn">
+          <button class="btn btn-primary"
+                  type="button"
+                  ng-click="uiAddField()">
+            <span class="glyphicon glyphicon-plus"></span>
+          </button>
+        </span>
+
+      </div>
+    </div>
+
+  </div>  
+
+</div>
+
+

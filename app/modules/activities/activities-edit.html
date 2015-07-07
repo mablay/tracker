@@ -1,8 +1,9 @@
 <div class="container" ng-controller="ActivitiesEditController">
 
+  <!-- title and delete button -->
   <div class="row">
     <div class="col-md-10">
-        <h3 ng-bind="activity.title"></h3>
+        <h3>Edit "<span ng-bind="activity.title"></span>"</h3>
     </div>
     <div class="col-md-2 header-accessory">
         <div class="btn btn-danger"
@@ -15,10 +16,14 @@
 
   <br>
 
+  <!-- New Field -->
   <div class="row">
+    <!-- Label -->
     <div class="col-md-4 cell-label">
       <label for="fieldName">New Field</label>
     </div>
+
+    <!-- Field Name -->
     <div class="col-md-4">
       <div class="input-group">
         <input id="fieldName"
@@ -37,17 +42,33 @@
 
       </div>
     </div>
+
   </div>
   <br>
 
 
   <!-- List properties -->
   <ul class="list-group">
-    <li class="list-group-item" ng-repeat="(title, activity) in activity">
-      <span ng-bind="title"></span>
+    <li class="list-group-item" ng-repeat="(name, schema) in activity.schema">
+      <div class="row" ui-sref='^.field({fieldName: "{{name}}" })'>
+        <div class="col col-md-4">
+          <span ng-bind="schema.label"></span>          
+        </div>
+        <div class="col col-md-4">
+          <span ng-bind="schema.type"></span>          
+        </div>
+        <div class="col col-md-4 text-right">
+           <span class="glyphicon glyphicon-edit"></span>          
+        </div>
+      </div>
     </li>
   </ul>
 
+
+  <div class="btn btn-primary btn-block" ui-sref="activity.view({id:activityId})">OK</div>
+  <br>
+
+  <!-- Debug -->
   <pre ng-bind="activity | json"></pre>
 
 

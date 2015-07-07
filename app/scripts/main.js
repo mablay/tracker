@@ -6,5 +6,5 @@ angular.module('tracker', [
 	'ngResource',
 	'ngStorage',
 	'ngAnimate',
-  'fields'
+  	'form'
 ]);

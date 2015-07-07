@@ -31,6 +31,12 @@ angular.module('tracker').controller('ActivitiesEditController', function(Activi
 	};
 
 
+	/** User wants to edit a certain field */
+	$scope.uiEditField = function(fieldName) {
+		console.debug('[UI] edit field %s', fieldName);
+	};
+
+
 	// --------------------
 	// Private Methods
 	// --------------------
@@ -38,11 +44,12 @@ angular.module('tracker').controller('ActivitiesEditController', function(Activi
 		console.debug('addField %o', $scope.fieldName);
 		// Check fieldName
 		if (!$scope.fieldName || $scope.fieldName.length < 1) return;
-		if ($scope.structure) return;
+		if ($scope.activity.records.length > 0) return;
 
 		// Create new field
-
+		Activity.createField(activityId, $scope.fieldName)
 	};
+
 
 
 });

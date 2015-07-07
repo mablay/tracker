@@ -90,6 +90,35 @@ angular.module('tracker').service('Activity', function($localStorage) {
     delete: function(activityId) {
       console.debug('[ACTIVITY] DELETE %s', activityId);
       delete $localStorage.activities[activityId];
+    },
+
+    /** Schema related methods */
+
+    listFields: function(activityId) {
+      var activity = this.read(activityId);
+      if (!activity) return [];
+      return Object.keys(activity.schema);
+    },
+    createField: function(activityId, fieldName, options) {
+      options = options || {};
+      if (!$localStorage.activities[activityId]) {
+        console.warn('Invalid activityId');
+        return;
+      }
+      if ($localStorage.activities[activityId].schema[fieldName]) {
+        console.warn('Field name already exists');
+        return;
+      }
+      var field = $.extend({
+        label: "field",
+        type: "string",
+        default: undefined,
+        visible: true
+      }, options);
+      // TODO: validate field
+
+      // Store field
+      $localStorage.activities[activityId].schema[fieldName] = field;
     }
   };
 });
