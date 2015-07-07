@@ -52,13 +52,13 @@
     <li class="list-group-item" ng-repeat="(name, schema) in activity.schema">
       <div class="row" ui-sref='^.field({fieldName: "{{name}}" })'>
         <div class="col col-md-4">
-          <span ng-bind="schema.label"></span>          
+          <span ng-bind="name"></span>
         </div>
         <div class="col col-md-4">
-          <span ng-bind="schema.type"></span>          
+          [<span ng-bind="schema.type|uppercase"></span>]
         </div>
         <div class="col col-md-4 text-right">
-           <span class="glyphicon glyphicon-edit"></span>          
+           <span class="glyphicon glyphicon-edit"></span>
         </div>
       </div>
     </li>
