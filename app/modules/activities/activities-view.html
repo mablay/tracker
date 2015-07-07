@@ -1,14 +1,14 @@
 <div class="container" ng-controller="ActivitiesController" ng-init="initActivityView()">
   <div class="row">
-    <div class="col-md-1 col-md-offset-3">
+    <div class="col-md-1 col-md-offset-3 col-xs-2">
       <div class="btn btn-default glyphicon glyphicon-chevron-left" ui-sref="activities"></div>
     </div>
-    <div class="col col-md-3">
+    <div class="col col-md-3 col-xs-7">
       <h4>
         <span ng-bind="activity.title"></span>
       </h4>
     </div>
-    <div class="col-md-2 text-right">
+    <div class="col-md-2 col-xs-3 text-right">
       <!-- EDIT BUTTON -->
       <div ng-if="!activity.records || !activity.records.length > 0">
         <div class="btn btn-warning" ui-sref="activity.edit">Edit</div>
@@ -21,7 +21,15 @@
       </div>
     </div>
   </div>
-  <br>
+  <br><br>
+
+  <div class="row" ng-if="activity.records.length < 1">
+    <div class="col col-md-offset-3 col-md-6">  
+      <div class="alert alert-info">
+        As long as no records have been added, you can still edit the activity schema.
+      </div>
+    </div>
+  </div>
 
   <!-- last 10 records notification -->
   <div class="row" ng-if="activity.records.length > 10">
