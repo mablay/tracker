@@ -11,6 +11,10 @@
     "xxhash": "*",
     "bootswatch-dist": "yeti",
     "angular-animate": "~1.4.1",
-    "angular-bootstrap": "~0.13.0"
+    "angular-bootstrap": "~0.13.0",
+    "angular-ui-select": "~0.12.0"
+  },
+  "resolutions": {
+    "angular": "~1.4.1"
   }
 }

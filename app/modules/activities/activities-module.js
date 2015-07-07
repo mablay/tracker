@@ -30,7 +30,7 @@ angular.module('tracker').config(function($stateProvider, $urlRouterProvider) {
       templateUrl: "modules/activities/activities-edit.html"
     })
     .state('activity.field', {
-      url: "/:fieldName",
+      url: "/schema/:fieldName",
       templateUrl: "modules/form/form-field-edit.html"
     })
     .state('activity.record', {

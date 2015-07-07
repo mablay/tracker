@@ -63,7 +63,6 @@ angular.module('tracker').service('Activity', function($localStorage) {
         title: activityName,
         schema: {
           timestamp: {
-            label: "Time",
             type: "timestamp",
             default: "NOW",
             visible: false
@@ -110,10 +109,11 @@ angular.module('tracker').service('Activity', function($localStorage) {
         return;
       }
       var field = $.extend({
-        label: "field",
         type: "string",
-        default: undefined,
-        visible: true
+        visible: true,
+        order: 0,
+        validation: {},
+        highlight: false
       }, options);
       // TODO: validate field
 

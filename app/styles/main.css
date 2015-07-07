@@ -69,7 +69,10 @@ body {
 }
 
 
-/* Main marketing message and sign up button */
+/** angular-ui-select adjustments */
+.ui-select-match .btn-default {
+  background-color: white;
+}
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
@@ -89,5 +92,5 @@ body {
     margin-bottom: 30px;
   }
 
-  
+
 }
