@@ -2,8 +2,8 @@ angular.module('form').controller('FormFieldEditController', function($scope, $s
 
 	$scope.fieldName = $stateParams.fieldName;
 	$scope.activity = Activity.read($scope.activityId);
+  $scope.field = $scope.activity.schema[$scope.fieldName];
 
-  $scope.dataType = "string";
   $scope.dataTypes = [
     'string',
     'number',
@@ -17,7 +17,12 @@ angular.module('form').controller('FormFieldEditController', function($scope, $s
 
   $scope.uiSubmit = function() {
     // TODO: Save field model
-    console.debug('serialize field schema changes');
+    console.debug('serialize field schema changes => %o', $scope.dataType);
+
+/*    var field = $scope.activity.schema[$scope.fieldName];
+    field.type = $scope.dataType;
+    Activity.updateField($scope.activityId, $scope.fieldName, field);
+*/
     $state.go('activity.edit');
   };
 

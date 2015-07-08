@@ -119,6 +119,10 @@ angular.module('tracker').service('Activity', function($localStorage) {
 
       // Store field
       $localStorage.activities[activityId].schema[fieldName] = field;
+    },
+    updateField: function(activityId, fieldName, field) {
+      if (!activityId || !fieldName || !field) return;
+      $localStorage.activities[activityId].schema[fieldName] = field;
     }
   };
 });
