@@ -4,6 +4,11 @@ angular.module('tracker').controller('ActivitiesEditController', function(Activi
   var activityId = $scope.activityId;	// passed by parent abstract controller (ui-router)
   $scope.activity = Activity.read(activityId);
 
+
+  ///
+  /// TODO: Clean up this mess!
+  /// ------------------------>
+
   $scope.fields = $.map($scope.activity.schema, function(obj, key) {
     var field = obj;
     field.id = key;
@@ -33,8 +38,12 @@ angular.module('tracker').controller('ActivitiesEditController', function(Activi
     }
   };
 
-
   console.debug('Fieldlist %o', $scope.fields);
+
+  ///
+  /// Until here (Clean up this mess!)
+  /// <------------------------
+
 
 	// --------------------
 	// UI Actions
