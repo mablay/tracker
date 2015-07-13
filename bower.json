@@ -12,7 +12,8 @@
     "bootswatch-dist": "yeti",
     "angular-animate": "~1.4.1",
     "angular-bootstrap": "~0.13.0",
-    "angular-ui-select": "~0.12.0"
+    "angular-ui-select": "~0.12.0",
+    "angular-ui-sortable": "~0.13.4"
   },
   "resolutions": {
     "angular": "~1.4.1"

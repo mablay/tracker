@@ -4,6 +4,37 @@ angular.module('tracker').controller('ActivitiesEditController', function(Activi
   var activityId = $scope.activityId;	// passed by parent abstract controller (ui-router)
   $scope.activity = Activity.read(activityId);
 
+  $scope.fields = $.map($scope.activity.schema, function(obj, key) {
+    var field = obj;
+    field.id = key;
+    delete field['$$hashKey'];
+    return field;
+  });
+
+  $scope.fields.sort(function(a, b){
+    a.order = a.order || 0;
+    b.order = b.order || 0;
+    return b.order - a.order;
+  });
+
+  $scope.updateOrder = function() {
+    for (var i = 0; i < $scope.fields.length; i++) {
+      var id = $scope.fields[i].id;
+      $scope.activity.schema[id].order = i;
+    }
+    Activity.updateSchema(activityId, $scope.activity.schema);
+  };
+  $scope.updateOrder();
+
+  $scope.sortableOptions = {
+    update: function(e, ui) {
+      console.debug('Field reordered, %o', $scope.fields);
+      $scope.updateOrder();
+    }
+  };
+
+
+  console.debug('Fieldlist %o', $scope.fields);
 
 	// --------------------
 	// UI Actions

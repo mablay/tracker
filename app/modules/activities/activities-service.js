@@ -1,6 +1,10 @@
 angular.module('tracker').service('Activity', function($localStorage) {
 
-  //var service;
+  // Make sure the persistence model exists
+  if (!$localStorage.activities) {
+    console.debug('No local persistence model has been found. Preparing local storage.');
+    $localStorage.activities = {};
+  }
 
   return {
     /**
@@ -22,7 +26,8 @@ angular.module('tracker').service('Activity', function($localStorage) {
      */
     list: function() {
       var activities = {};
-      var hashes = Object.keys($localStorage.activities);
+      // Safely read activity keys
+      var hashes = ($localStorage.activities) ? Object.keys($localStorage.activities) : [];
       for (var i=0; i<hashes.length; i++) {
         activities[hashes[i]] = {
           title: $localStorage.activities[hashes[i]].title
@@ -37,6 +42,7 @@ angular.module('tracker').service('Activity', function($localStorage) {
      * @returns activity OR null if none was found
      */
     read: function(activityId) {
+      if (!$localStorage.activities) return null;
       if ($localStorage.activities.hasOwnProperty(activityId)) {
         return $localStorage.activities[activityId];
       }
@@ -123,6 +129,10 @@ angular.module('tracker').service('Activity', function($localStorage) {
     updateField: function(activityId, fieldName, field) {
       if (!activityId || !fieldName || !field) return;
       $localStorage.activities[activityId].schema[fieldName] = field;
+    },
+    updateSchema: function(activityId, schema) {
+      if (!activityId || !schema) return;
+      $localStorage.activities[activityId].schema = schema;
     }
   };
 });

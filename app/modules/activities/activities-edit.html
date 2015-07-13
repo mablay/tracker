@@ -48,17 +48,17 @@
 
 
   <!-- List properties -->
-  <ul class="list-group">
-    <li class="list-group-item" ng-repeat="(name, schema) in activity.schema">
-      <div class="row" ui-sref='^.field({fieldName: "{{name}}" })'>
+  <ul class="list-group" ui-sortable="sortableOptions" ng-model="fields">
+    <li class="list-group-item" ng-repeat="field in fields">
+      <div class="row" ui-sref='^.field({fieldName: "{{field.id}}" })'>
         <div class="col col-md-4">
-          <span ng-bind="name"></span>
+          <span ng-bind="field.id"></span>
         </div>
         <div class="col col-md-4">
-          [<span ng-bind="schema.type|uppercase"></span>]
+          [<span ng-bind="field.type|uppercase"></span>]
         </div>
         <div class="col col-md-4 text-right">
-           <span class="glyphicon glyphicon-edit"></span>
+           <span class="glyphicon glyphicon-align-justify"></span>
         </div>
       </div>
     </li>
@@ -101,5 +101,3 @@
   </div>
 
 </div>
-
-
