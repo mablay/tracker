@@ -56,6 +56,7 @@ angular.module('tracker').controller('ActivitiesController', function(Activity, 
   $scope.uiDeleteActivity = function() {
     console.debug('User deletes activity %s', $scope.activityId);
     console.warn('TODO: implement activity delete behavior here. Use activities-confirm-delete-modal.html');
+    Activity.delete($scope.activityId);
     $state.go('activities');
   }
 

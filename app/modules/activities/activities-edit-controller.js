@@ -9,19 +9,23 @@ angular.module('tracker').controller('ActivitiesEditController', function(Activi
   /// TODO: Clean up this mess!
   /// ------------------------>
 
-  $scope.fields = $.map($scope.activity.schema, function(obj, key) {
-    var field = obj;
-    field.id = key;
-    delete field['$$hashKey'];
-    return field;
-  });
+  // Reads the field list from the activity schema and sorts it by order
+  $scope.updateFields = function() {
+    $scope.fields = $.map($scope.activity.schema, function(obj, key) {
+      var field = obj;
+      field.id = key;
+      return field;
+    });
 
-  $scope.fields.sort(function(a, b){
-    a.order = a.order || 0;
-    b.order = b.order || 0;
-    return b.order - a.order;
-  });
+    $scope.fields.sort(function(a, b){
+      a.order = a.order || 0;
+      b.order = b.order || 0;
+      return b.order - a.order;
+    });
+  };
+  $scope.updateFields();
 
+  // copies the field order back to the activity schema and serializes it.
   $scope.updateOrder = function() {
     for (var i = 0; i < $scope.fields.length; i++) {
       var id = $scope.fields[i].id;
@@ -31,6 +35,7 @@ angular.module('tracker').controller('ActivitiesEditController', function(Activi
   };
   $scope.updateOrder();
 
+  // Options for the ui-sortable directive
   $scope.sortableOptions = {
     update: function(e, ui) {
       console.debug('Field reordered, %o', $scope.fields);
@@ -87,7 +92,8 @@ angular.module('tracker').controller('ActivitiesEditController', function(Activi
 		if ($scope.activity.records.length > 0) return;
 
 		// Create new field
-		Activity.createField(activityId, $scope.fieldName)
+		Activity.createField(activityId, $scope.fieldName);
+    $scope.updateFields();
 	};
 
 

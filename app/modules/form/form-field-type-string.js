@@ -2,10 +2,10 @@
  * Created by marc on 06/07/15.
  */
 
-angular.module('form').directive('stringField', function() {
+angular.module('form').directive('formFieldString', function() {
 
   return {
-    templateUrl: 'form-field-type-string.html'
+    templateUrl: 'modules/form/form-field-type-string.html'
   };
 
 });

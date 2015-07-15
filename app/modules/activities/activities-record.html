@@ -1,15 +1,13 @@
 <div class="container" ng-controller="RecordController">
-	
+
 	<h3>New "<span ng-bind="activity.title"></span>" record</h3>
 
 	<!-- Render the list of editable fields -->
 	<form class="form-horizontal">
 	  <div class="form-group" ng-repeat="(key, field) in activity.schema track by $index">
-	    <label for="key" class="col-sm-2 control-label" ng-bind="key"></label>
+	    <label for="{{key}}" class="col-sm-2 control-label" ng-bind="key"></label>
 	    <div class="col-sm-10">
-	      <input type="text" 
-	      		 class="form-control" 
-	      		 ng-model="record[key]">
+        <div form-field="field" ff-model="record.{{field.type}}"></div>
 	    </div>
 	  </div>
 	</form>
@@ -18,7 +16,7 @@
 
 	<div class="row">
 		<div class="col col-md-6">
-			<div class="btn btn-warning" ui-sref="activity.view">Cancel</div>			
+			<div class="btn btn-warning" ui-sref="activity.view">Cancel</div>
 		</div>
 		<div class="col col-md-6 text-right">
 			<div class="btn btn-primary" ng-click="uiCreateRecord()">Create</div>
@@ -26,6 +24,13 @@
 	</div>
 	<br>
 
-	<pre ng-bind="activity.schema | json"></pre>
+  <div class="row">
+    <div class="col col-md-6">
+      <pre ng-bind="activity.schema | json"></pre>
+    </div>
+    <div class="col col-md-6">
+      <pre ng-bind="record | json"></pre>
+    </div>
+  </div>
 
 </div>
